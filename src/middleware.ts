@@ -1,28 +1,12 @@
-import { withAuth } from "@kinde-oss/kinde-auth-nextjs/middleware";
-import { NextRequest } from "next/server";
+import { clerkMiddleware } from '@clerk/nextjs/server'
 
-export default withAuth(
-  async function middleware(request: NextRequest) {
-    console.log(request)
-  }, {
-  isReturnToCurrentPage: true,
-}
-)
+export default clerkMiddleware()
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - auth
-     * - favicon.ico (favicon file)
-     * - robots.txt
-     * - images
-     * - login
-     * - homepage (represented with $ after beginning /)
-     */
-    '/((?!api|_next/static|_next/image|auth|favicon.ico|robots.txt|images|login|$).*)',
-  ]
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 }
