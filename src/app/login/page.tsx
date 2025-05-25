@@ -25,9 +25,9 @@ export default function Login() {
       } else {
         console.log("Additional steps required");
       }
-    } catch (err: any) {
-      console.error(err);
-      setError(err.errors?.[0]?.message || "Login failed");
+    } catch (err: unknown) {
+  const error = err as { errors?: { message: string }[] };
+  setError(error.errors?.[0]?.message || "Login failed");
     }
   };
 

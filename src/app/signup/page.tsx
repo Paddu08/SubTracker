@@ -17,41 +17,41 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  if (!isLoaded) return null;
+  if (!isLoaded ||!signUp) return null;
 
   async function handleSignUp(e: React.FormEvent) {
     e.preventDefault();
     try {
-      await signUp.create({
+      await signUp!.create({
         emailAddress,
         password,
       });
 
-      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+      await signUp!.prepareEmailAddressVerification({ strategy: "email_code" });
 
       setPendingVerification(true);
-    } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
-      setError(err.errors[0].message);
+    } catch (err: unknown) {
+  const error = err as { errors?: { message: string }[] };
+  setError(error.errors?.[0]?.message || "Login failed");
     }
   }
 
   async function handleVerifyCode(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
+      const completeSignUp = await signUp!.attemptEmailAddressVerification({
         code,
       });
 
       if (completeSignUp.status === "complete") {
-        await setActive({ session: completeSignUp.createdSessionId });
+        await setActive!({ session: completeSignUp.createdSessionId });
         router.push("/dashboard");
       } else {
         console.log("Verification incomplete:", completeSignUp);
       }
-    } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
-      setError(err.errors[0].message);
+    } catch (err: unknown) {
+  const error = err as { errors?: { message: string }[] };
+  setError(error.errors?.[0]?.message || "Login failed");
     }
   }
 
