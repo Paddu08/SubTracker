@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 
 export default function Login() {
   const { signIn, setActive, isLoaded } = useSignIn();
