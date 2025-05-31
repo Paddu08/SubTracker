@@ -36,11 +36,17 @@ export default function Subscriptions() {
       </div>
         <p className="text-gray-500 mt-8">Add subscriptions as needed.</p> 
       <form onSubmit={handleSubmit} className="w-full max-w-md mt-8">    
-        <div className="flex  items-center gap-4">  
-            <Input  name="plan"placeholder="Title" className="" />
-            <Input  name="price"placeholder="Price"/>
-            <Input  name='startDate'placeholder="DD/MM/YY" type="date"/>
-        </div>
+     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+
+  <Input className="w-full" name="plan" placeholder="Title" />
+
+  <Input className="w-full" name="price" placeholder="Price" type="number" />
+
+  <Input className="w-full" name="startDate" placeholder="Start Date" type="date" />
+
+  <Input className="w-full" name="duration" placeholder="Duration (months)" type="number" />
+
+</div>
                     <Button className="mt-4">Add Subscription</Button>
       </form>
 
