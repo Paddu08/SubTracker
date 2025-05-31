@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   const {
-    id: clerkUserId,
+    // id: clerkUserId,
     first_name,
     last_name,
     email_addresses,
