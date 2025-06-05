@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createSubscription } from "@/actions/actions";
+import { Header } from "@/app/components/Header";
+
 
 
 export default function Subscriptions() {
@@ -17,6 +19,7 @@ export default function Subscriptions() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+      <Header/>
       <h1 className="text-3xl font-bold mb-2">Your subscriptions at a glance</h1>
       <p className="text-gray-600 mb-8">Manage your subscriptions easily.</p>
 
@@ -36,13 +39,13 @@ export default function Subscriptions() {
       </div>
         <p className="text-gray-500 mt-8">Add subscriptions as needed.</p> 
       <form onSubmit={handleSubmit} className="w-full max-w-md mt-8">    
-     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md"> 
 
   <Input className="w-full" name="plan" placeholder="Title" />
 
   <Input className="w-full" name="price" placeholder="Price" type="number" />
 
-  <Input className="w-full" name="startDate" placeholder="Start Date" type="date" />
+  <Input className="flex" name="startDate" placeholder="Start Date" type="date" />
 
   <Input className="w-full" name="duration" placeholder="Duration (months)" type="number" />
 

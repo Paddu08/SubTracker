@@ -5,12 +5,13 @@ export const customers = pgTable("customers", {
     id: serial("id").primaryKey(),
     firstName: varchar("first_name").notNull(),
     lastName: varchar("last_name").notNull(),
+    clerkId: varchar("clerk_id").unique(),
     email: varchar("email").unique().notNull(),
     phone: varchar("phone").unique().notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdate(() => new Date()),
 })
-
+ 
 
 export const subscriptions=pgTable("subscriptions", {
     id: serial("id").primaryKey(),

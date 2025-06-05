@@ -8,8 +8,7 @@ export async function createSubscription(formData: FormData) {
   const plan = formData.get("plan") as string;
   const price = parseInt(formData.get("price") as string);
   const startDate = formData.get("startDate") as string;
-const endDate = parseInt(formData.get("duration") as string); // Get duration in months
-
+const endDate = parseInt(formData.get("duration") as string); 
 
   if (!plan || !price || !startDate) {
     throw new Error("Missing required fields");
@@ -17,7 +16,7 @@ const endDate = parseInt(formData.get("duration") as string); // Get duration in
 
   const start = new Date(startDate);
   const end = new Date(startDate);
-end.setMonth(end.getMonth() + endDate); // Add duration (in months)
+end.setMonth(end.getMonth() + endDate); 
 
   await db.insert(subscriptions).values({
     customerId: 1, 
@@ -30,4 +29,11 @@ end.setMonth(end.getMonth() + endDate); // Add duration (in months)
   });
 
   revalidatePath("/"); // Refresh the homepage if needed
+}
+
+
+
+export async function getAllSubscriptions() {
+  const all = await db.select().from(subscriptions);
+  return all;
 }

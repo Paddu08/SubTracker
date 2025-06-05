@@ -45,7 +45,7 @@ export default function SignUp() {
 
       if (completeSignUp.status === "complete") {
         await setActive!({ session: completeSignUp.createdSessionId });
-        router.push("/dashboard");
+        router.push("/subtracker/subscriptions");
       } else {
         console.log("Verification incomplete:", completeSignUp);
       }

@@ -32,6 +32,7 @@ export default function Login() {
   };
 
   return (
+    
     <div className="flex flex-col h-screen items-center justify-center gap-4">
       <h1 className="text-2xl font-inter font-bold">Welcome to SubTrackr</h1>
       <p className="text-sm text-gray-600">Please log in to continue</p>
@@ -53,7 +54,7 @@ export default function Login() {
 
 
       {error && <p className="text-red-500 text-sm">{error}</p>}
-
+    
       <button
         onClick={handleLogin}
         className="bg-[#3A86FF] text-white px-4 py-2 rounded-md w-[400px]"
