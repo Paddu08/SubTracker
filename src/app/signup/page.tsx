@@ -88,6 +88,9 @@ export default function SignUp() {
             />
             Show Password
           </label>
+            <div id="clerk-captcha"></div>
+
+        <div></div>
           <Button type="submit" className="bg-[#3A86FF]">Sign Up</Button>
         </form>
       ) : (

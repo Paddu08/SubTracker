@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { createSubscription } from "@/actions/actions";
+import { createSubscription } from "@/actions/createSubscription";
 import { Header } from "@/app/components/Header";
 
 
@@ -39,18 +39,29 @@ export default function Subscriptions() {
       </div>
         <p className="text-gray-500 mt-8">Add subscriptions as needed.</p> 
       <form onSubmit={handleSubmit} className="w-full max-w-md mt-8">    
-     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md"> 
+     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+  <div className="flex flex-col">
+    <label htmlFor="plan" className="mb-1  self-start text-sm font-medium text-gray-700">Plan Title</label>
+    <Input className="w-full" name="plan" id="plan" placeholder="Title" />
+  </div>
 
-  <Input className="w-full" name="plan" placeholder="Title" />
+  <div className="flex flex-col">
+    <label htmlFor="price" className="mb-1 self-start text-sm font-medium text-gray-700">Price</label>
+    <Input className="w-full" name="price" id="price" placeholder="Price" type="number" />
+  </div>
 
-  <Input className="w-full" name="price" placeholder="Price" type="number" />
+  <div className="flex flex-col">
+    <label htmlFor="startDate" className="mb-1 self-start text-sm font-medium text-gray-700">Start Date</label>
+    <Input className="w-full" name="startDate" id="startDate" placeholder="Start Date" type="date" />
+  </div>
 
-  <Input className="flex" name="startDate" placeholder="Start Date" type="date" />
-
-  <Input className="w-full" name="duration" placeholder="Duration (months)" type="number" />
-
+  <div className="flex flex-col">
+    <label htmlFor="duration" className="mb-1 self-start text-sm font-medium text-gray-700">Duration (months)</label>
+    <Input className="w-full " name="duration" id="duration" placeholder="Duration (months)" type="number" />
+  </div>
 </div>
-                    <Button className="mt-4">Add Subscription</Button>
+
+                    <Button className="bg-[#3A86FF] text-white px-4 py-2 rounded-md  mt-4">Add Subscription</Button>
       </form>
 
     </main>

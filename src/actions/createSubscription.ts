@@ -3,8 +3,11 @@
 import { db } from "@/db/index";
 import { subscriptions } from "@/db/schema";
 import { revalidatePath } from "next/cache";
-
+import { getCustDetails } from "./getCustDetails";
+  
 export async function createSubscription(formData: FormData) {
+  const user = await getCustDetails();
+  
   const plan = formData.get("plan") as string;
   const price = parseInt(formData.get("price") as string);
   const startDate = formData.get("startDate") as string;
@@ -19,7 +22,7 @@ const endDate = parseInt(formData.get("duration") as string);
 end.setMonth(end.getMonth() + endDate); 
 
   await db.insert(subscriptions).values({
-    customerId: 1, 
+    customerId: user.id, 
     plan,
     price,
     startDate: start,
