@@ -13,9 +13,12 @@ export async function getSubscriptionsCus() {
     .from(subscriptions)
     .where(eq(subscriptions.customerId, user.id));
 
-  if (!subs || subs.length === 0) {
+  if (!subs) {
     throw new Error("No subscriptions found for this customer");
   }
 
+  if(subs.length === 0) {
+    return []
+  }
   return subs;
 }
