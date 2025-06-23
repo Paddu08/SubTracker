@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Header } from "@/app/components/Header";
 
 export default function Home() {
   return (
+    
     <div
       className="
         grid grid-rows-[20px_1fr_20px] items-center justify-items-center 
@@ -9,6 +11,7 @@ export default function Home() {
         font-[family-name:var(--font-geist-sans)]
       "
     >
+      <Header/>
       <h1 className="text-3xl font-bold">SubTrackr</h1>
 
       <nav className="flex flex-col space-y-6">
