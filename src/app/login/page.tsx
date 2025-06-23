@@ -25,7 +25,7 @@ export default function Login() {
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
         console.log("Login successful");
-        router.push("/subtracker/dashboard"); // Redirect to subscriptions page
+        router.replace("/subtracker/dashboard"); // Redirect to subscriptions page
         // Redirect or show success message
       } else {
         console.log("Additional steps required");
