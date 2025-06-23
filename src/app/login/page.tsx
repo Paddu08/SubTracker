@@ -2,11 +2,15 @@
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";  // import router
+
 
 export default function Login() {
   const { signIn, setActive, isLoaded } = useSignIn();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const router = useRouter(); // initialize router
+
   const [error, setError] = useState("");
 
   const handleLogin = async () => {
@@ -21,6 +25,7 @@ export default function Login() {
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
         console.log("Login successful");
+        router.push("/subtracker/dashboard"); // Redirect to subscriptions page
         // Redirect or show success message
       } else {
         console.log("Additional steps required");
