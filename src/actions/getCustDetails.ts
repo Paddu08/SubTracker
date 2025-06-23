@@ -25,6 +25,8 @@ export async function getCustDetails() {
 
   return {
     id: customer.id,
+        email: customer.email,
+
    
   }
 }
