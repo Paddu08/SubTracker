@@ -24,9 +24,9 @@ export default  async function SubscriptionsPage() {
       <form action={sendEmailAction} className="mt-8">
         <button
           type="submit"
-          className="bg-[#3A86FF] text-white px-4 py-2
+          className="bg-[#3A86FF] text-white px-4 py-2 mt-8 rounded
 
-            ">EMail</button>
+            ">Email</button>
             </form>
     </div>
   );
