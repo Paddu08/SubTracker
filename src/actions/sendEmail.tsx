@@ -2,11 +2,11 @@
 
 import { transporter } from '@/lib/mailer';
 import { getSubscriptionReminderEmailHtml } from '@/components/ui/Emailtemplate';
-import { getExpiringSubscriptions } from './getExpirySubscription';
+import { getExpiringSubscriptionsWithin7Days } from './getExpirySubscription';
 
 export async function sendEmailAction() {
   try {
-    const subs = await getExpiringSubscriptions();
+    const subs = await getExpiringSubscriptionsWithin7Days();
 
     if (subs.length === 0) {
       console.log('ℹ️ No expiring subscriptions today.');
