@@ -29,6 +29,20 @@
       "when": 1748931252641,
       "tag": "0003_hard_power_pack",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1750846456350,
+      "tag": "0004_groovy_jimmy_woo",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1751266745157,
+      "tag": "0005_wild_zaladane",
+      "breakpoints": true
     }
   ]
 }

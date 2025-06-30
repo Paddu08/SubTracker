@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar,  timestamp, integer,  } from "drizzle-orm/pg-core"
+import { pgTable, serial, varchar,  timestamp, integer,boolean  } from "drizzle-orm/pg-core"
 import { relations } from "drizzle-orm"
 
 export const customers = pgTable("customers", {
@@ -30,3 +30,25 @@ export const subscriptions=pgTable("subscriptions", {
 export const customersRelations = relations(customers, ({ many }) => ({
     subscriptions: many(subscriptions),
 }))
+
+
+export const scheduledEmails = pgTable("scheduled_emails", {
+  id: serial("id").primaryKey(),
+  customerId: integer("customer_id")
+    .references(() => customers.id, { onDelete: "cascade" }) // 💡 foreign key
+    .notNull(),
+
+  email: varchar("email", { length: 255 }).notNull(),
+  reminderTitle: varchar("reminder_title", { length: 255 }).notNull(),
+
+  scheduledAt: timestamp("scheduled_at", { withTimezone: true }).notNull(),
+  sent: boolean("sent").notNull().default(false),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const scheduledEmailsRelations = relations(scheduledEmails, ({ one }) => ({
+  customer: one(customers, {
+    fields: [scheduledEmails.customerId],
+    references: [customers.id],
+  }),
+}));
