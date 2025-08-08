@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { createSubscription } from "@/actions/createSubscription";
 import { Header } from "@/app/components/Header";
+import { toast } from "sonner";
 
 
 
@@ -14,7 +15,14 @@ export default function Subscriptions() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    await createSubscription(formData);
+    
+    try {
+      await createSubscription(formData);
+      toast.success("Subscription added successfully!");
+    } catch (error) { 
+      console.error("Error creating subscription:", error);
+      toast.error("Missing required fields or an error occurred.");
+    }
   };
 
   return (
