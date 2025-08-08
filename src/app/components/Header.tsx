@@ -27,6 +27,9 @@ export function Header() {
             <nav className="flex items-center gap-4">
               <Link href="/subtracker/dashboard" className="text-sm hover:underline">Dashboard</Link>
               <Link href="/subtracker/subscriptions" className="text-sm hover:underline">Subscriptions</Link>
+              <Link href="/subtracker/about" className="text-sm hover:underline">
+                About
+              </Link>
             </nav>
             <UserButton afterSignOutUrl="/login" />
           </SignedIn>
